@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #0a0e27;
+    --bg-card: #1a1f3a;
+    --accent-happy: #ffd93d;
+    --accent-sad: #6bcfff;
+    --accent-angry: #ff6b6b;
+    --accent-relaxed: #95e1d3;
+    --text-primary: #ffffff;
+    --text-secondary: #b8c1ec;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2a2f4a 100%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px 0;
+}
+
+.logo {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-happy), var(--accent-sad), var(--accent-angry), var(--accent-relaxed));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    animation: gradient-shift 3s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Mood Selector */
+.mood-selector {
+    margin-bottom: 50px;
+}
+
+.mood-selector h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.mood-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.mood-btn {
+    background: var(--bg-card);
+    border: 3px solid transparent;
+    border-radius: 20px;
+    padding: 30px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.mood-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--shadow);
+}
+
+.mood-btn.active {
+    transform: scale(1.05);
+}
+
+.mood-btn.happy:hover,
+.mood-btn.happy.active {
+    border-color: var(--accent-happy);
+    background: linear-gradient(135deg, var(--bg-card), rgba(255, 217, 61, 0.1));
+}
+
+.mood-btn.sad:hover,
+.mood-btn.sad.active {
+    border-color: var(--accent-sad);
+    background: linear-gradient(135deg, var(--bg-card), rgba(107, 207, 255, 0.1));
+}
+
+.mood-btn.angry:hover,
+.mood-btn.angry.active {
+    border-color: var(--accent-angry);
+    background: linear-gradient(135deg, var(--bg-card), rgba(255, 107, 107, 0.1));
+}
+
+.mood-btn.relaxed:hover,
+.mood-btn.relaxed.active {
+    border-color: var(--accent-relaxed);
+    background: linear-gradient(135deg, var(--bg-card), rgba(149, 225, 211, 0.1));
+}
+
+.emoji {
+    font-size: 3rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.mood-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Results Section */
+.results {
+    margin-top: 50px;
+}
+
+.results-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#results-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.songs-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.songs-grid.show {
+    display: grid;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.song-card {
+    background: var(--bg-card);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px var(--shadow);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.song-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--shadow);
+}
+
+.song-card.happy {
+    border-color: var(--accent-happy);
+}
+
+.song-card.sad {
+    border-color: var(--accent-sad);
+}
+
+.song-card.angry {
+    border-color: var(--accent-angry);
+}
+
+.song-card.relaxed {
+    border-color: var(--accent-relaxed);
+}
+
+.song-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.song-artist {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.song-genre {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+
+.song-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.song-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Loading State */
+.loading {
+    display: none;
+    text-align: center;
+    padding: 50px;
+}
+
+.loading.show {
+    display: block;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--accent-happy);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Error State */
+.error {
+    display: none;
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 107, 107, 0.1);
+    border: 2px solid var(--accent-angry);
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+.error.show {
+    display: block;
+}
+
+.error p {
+    color: var(--accent-angry);
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 80px;
+    padding: 30px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .mood-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .songs-grid {
+        grid-template-columns: 1fr;
+    }
+}

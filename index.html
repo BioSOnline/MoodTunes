@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodTunes - Mood-Based Music Recommendations</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">🎵 MoodTunes</h1>
+            <p class="tagline">Discover music that matches your mood</p>
+        </header>
+
+        <main>
+            <section class="mood-selector">
+                <h2>How are you feeling today?</h2>
+                <div class="mood-buttons">
+                    <button class="mood-btn happy" data-emotion="Happy">
+                        <span class="emoji">😊</span>
+                        <span class="mood-name">Happy</span>
+                    </button>
+                    <button class="mood-btn sad" data-emotion="Sad">
+                        <span class="emoji">😢</span>
+                        <span class="mood-name">Sad</span>
+                    </button>
+                    <button class="mood-btn angry" data-emotion="Angry">
+                        <span class="emoji">😠</span>
+                        <span class="mood-name">Angry</span>
+                    </button>
+                    <button class="mood-btn relaxed" data-emotion="Relaxed">
+                        <span class="emoji">😌</span>
+                        <span class="mood-name">Relaxed</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="results" id="results">
+                <div class="results-header">
+                    <h2 id="results-title">Select a mood to see recommendations</h2>
+                </div>
+                <div class="songs-grid" id="songs-grid">
+                    <!-- Songs will be dynamically inserted here -->
+                </div>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Finding perfect songs for you...</p>
+                </div>
+                <div class="error" id="error">
+                    <p>⚠️ Unable to fetch songs. Please make sure the backend server is running.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by Flask & SQLite</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
